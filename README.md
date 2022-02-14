@@ -29,55 +29,19 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`did-hedera hello PERSON`](#didhedera-hello-person)
-* [`did-hedera hello world`](#didhedera-hello-world)
-* [`did-hedera help [COMMAND]`](#didhedera-help-command)
-* [`did-hedera plugins`](#didhedera-plugins)
-* [`did-hedera plugins:inspect PLUGIN...`](#didhedera-pluginsinspect-plugin)
-* [`did-hedera plugins:install PLUGIN...`](#didhedera-pluginsinstall-plugin)
-* [`did-hedera plugins:link PLUGIN`](#didhedera-pluginslink-plugin)
-* [`did-hedera plugins:uninstall PLUGIN...`](#didhedera-pluginsuninstall-plugin)
-* [`did-hedera plugins update`](#didhedera-plugins-update)
-
-## `did-hedera hello PERSON`
-
-Say hello
-
-```
-USAGE
-  $ did-hedera hello [PERSON] -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Whom is saying hello
-
-DESCRIPTION
-  Say hello
-
-EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
-```
-
-_See code: [dist/commands/hello/index.ts](https://github.com/javereec/did-hedera-cli/blob/v0.0.0/dist/commands/hello/index.ts)_
-
-## `did-hedera hello world`
-
-Say hello world
-
-```
-USAGE
-  $ did-hedera hello world
-
-DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ oex hello world
-  hello world! (./src/commands/hello/world.ts)
-```
+* [`did-hedera help [COMMAND]`](#did-hedera-help-command)
+* [`did-hedera messages DID`](#did-hedera-messages-did)
+* [`did-hedera new`](#did-hedera-new)
+* [`did-hedera plugins`](#did-hedera-plugins)
+* [`did-hedera plugins:inspect PLUGIN...`](#did-hedera-pluginsinspect-plugin)
+* [`did-hedera plugins:install PLUGIN...`](#did-hedera-pluginsinstall-plugin)
+* [`did-hedera plugins:link PLUGIN`](#did-hedera-pluginslink-plugin)
+* [`did-hedera plugins:uninstall PLUGIN...`](#did-hedera-pluginsuninstall-plugin)
+* [`did-hedera plugins update`](#did-hedera-plugins-update)
+* [`did-hedera resolve DID`](#did-hedera-resolve-did)
+* [`did-hedera service add [IDSUFFIX] [TYPE] [SERVICEENDPOINT]`](#did-hedera-service-add-idsuffix-type-serviceendpoint)
+* [`did-hedera service revoke [IDSUFFIX]`](#did-hedera-service-revoke-idsuffix)
+* [`did-hedera service update [IDSUFFIX] [TYPE] [SERVICEENDPOINT]`](#did-hedera-service-update-idsuffix-type-serviceendpoint)
 
 ## `did-hedera help [COMMAND]`
 
@@ -98,6 +62,46 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.10/src/commands/help.ts)_
+
+## `did-hedera messages DID`
+
+List messages (& events) on HCS for did:hedera
+
+```
+USAGE
+  $ did-hedera messages [DID] [-h]
+
+FLAGS
+  -h, --help  Show CLI help.
+
+DESCRIPTION
+  List messages (& events) on HCS for did:hedera
+
+EXAMPLES
+  $ did-hedera messages did:hedera:testnet:z6MkrgzSb23YA21FBqTgrq5AssRxMdYrwyF9P1HSNRDCxqKu_0.0.29666198
+```
+
+_See code: [dist/commands/messages.ts](https://github.com/javereec/did-hedera-cli/blob/v0.0.0/dist/commands/messages.ts)_
+
+## `did-hedera new`
+
+Create new did:hedera
+
+```
+USAGE
+  $ did-hedera new [-h]
+
+FLAGS
+  -h, --help  Show CLI help.
+
+DESCRIPTION
+  Create new did:hedera
+
+EXAMPLES
+  $ did-hedera new
+```
+
+_See code: [dist/commands/new.ts](https://github.com/javereec/did-hedera-cli/blob/v0.0.0/dist/commands/new.ts)_
 
 ## `did-hedera plugins`
 
@@ -172,7 +176,7 @@ ALIASES
   $ did-hedera plugins add
 
 EXAMPLES
-  $ did-hedera plugins:install myplugin
+  $ did-hedera plugins:install myplugin 
 
   $ did-hedera plugins:install https://github.com/someuser/someplugin
 
@@ -243,5 +247,82 @@ FLAGS
 
 DESCRIPTION
   Update installed plugins.
+```
+
+## `did-hedera resolve DID`
+
+Resolve did:hedera
+
+```
+USAGE
+  $ did-hedera resolve [DID] [-h]
+
+FLAGS
+  -h, --help  Show CLI help.
+
+DESCRIPTION
+  Resolve did:hedera
+
+EXAMPLES
+  $ did-hedera resolve did:hedera:testnet:z6MkrgzSb23YA21FBqTgrq5AssRxMdYrwyF9P1HSNRDCxqKu_0.0.29666198
+```
+
+_See code: [dist/commands/resolve.ts](https://github.com/javereec/did-hedera-cli/blob/v0.0.0/dist/commands/resolve.ts)_
+
+## `did-hedera service add [IDSUFFIX] [TYPE] [SERVICEENDPOINT]`
+
+Add a service definition for did:hedera
+
+```
+USAGE
+  $ did-hedera service add [IDSUFFIX] [TYPE] [SERVICEENDPOINT] -d <value> -p <value>
+
+FLAGS
+  -d, --did=<value>         (required) did:hedera
+  -p, --privateKey=<value>  (required) hex-encoded private key that controls the DID
+
+DESCRIPTION
+  Add a service definition for did:hedera
+
+EXAMPLES
+  $ did-hedera service:add service-1 LinkedDomains https://example.com/s1
+```
+
+## `did-hedera service revoke [IDSUFFIX]`
+
+Revoke a service for the DID
+
+```
+USAGE
+  $ did-hedera service revoke [IDSUFFIX] -d <value> -p <value>
+
+FLAGS
+  -d, --did=<value>         (required) did:hedera
+  -p, --privateKey=<value>  (required) hex-encoded private key that controls the DID
+
+DESCRIPTION
+  Revoke a service for the DID
+
+EXAMPLES
+  $ did-hedera service revoke service-1
+```
+
+## `did-hedera service update [IDSUFFIX] [TYPE] [SERVICEENDPOINT]`
+
+Update a service for the DID
+
+```
+USAGE
+  $ did-hedera service update [IDSUFFIX] [TYPE] [SERVICEENDPOINT] -d <value> -p <value>
+
+FLAGS
+  -d, --did=<value>         (required) did:hedera
+  -p, --privateKey=<value>  (required) hex-encoded private key that controls the DID
+
+DESCRIPTION
+  Update a service for the DID
+
+EXAMPLES
+  $ did-hedera service:add service-1 LinkedDomains https://example.com/vcs
 ```
 <!-- commandsstop -->
