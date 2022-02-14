@@ -28,8 +28,5 @@ export default class Resolve extends Command {
     CliUx.ux.action.stop()
 
     this.log(didDoc.toJsonTree())
-
-    const dragonglassUrl = `https://testnet.dragonglass.me/hedera/topics/${d.getTopicId().toString()}`
-    await CliUx.ux.url(`🐉 ${dragonglassUrl}`, dragonglassUrl)
   }
 }
