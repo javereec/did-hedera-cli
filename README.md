@@ -1,7 +1,7 @@
 DID Hedera CLI
 ==============
 
-oclif example Hello World CLI
+A Command Line Interface (CLI) for Hedera DIDs
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
@@ -176,7 +176,7 @@ ALIASES
   $ did-hedera plugins add
 
 EXAMPLES
-  $ did-hedera plugins:install myplugin 
+  $ did-hedera plugins:install myplugin
 
   $ did-hedera plugins:install https://github.com/someuser/someplugin
 
